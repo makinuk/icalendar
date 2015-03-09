@@ -19,6 +19,6 @@
             "makinuk\\ICalendar\\": ""
         }
     },
-    "target-dir": "makinuk/ICalender",
+    "target-dir": "makinuk/ICalendar",
     "minimum-stability": "dev"
 }
