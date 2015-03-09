@@ -1,0 +1,24 @@
+{
+    "name": "makinuk/icalendar",
+    "type": "library",
+    "description": "iCalendar is a computer file format which allows Internet users to send meeting requests and tasks to other Internet users",
+    "keywords": ["ICalendar", "outlook", "google mail", "task", "meeting","alarm"],
+    "homepage": "http://makinuk.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mustafa AKIN",
+            "email": "makinuk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9"
+    },
+    "autoload": {
+        "psr-0": {
+            "makinuk\\ICalendar\\": ""
+        }
+    },
+    "target-dir": "makinuk/ICalender",
+    "minimum-stability": "dev"
+}
