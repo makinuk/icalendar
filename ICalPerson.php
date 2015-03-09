@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace makinuk\icalendar;
+namespace makinuk\ICalendar;
 
 /**
  * Description of ICalPerson

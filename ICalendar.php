@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace icalendar;
+namespace makinuk\ICalendar;
 
 /**
  * @author m.akin
@@ -47,13 +47,17 @@ class ICalendar {
 		return $this;
 	}
 	
-	public function show() {
+	public function show($fileName = "iCalendar.ics") {
 		header('Content-type: text/calendar; charset=utf-8');
-		header('Content-Disposition: inline; filename=MtmCalendar.ics');
+		header('Content-Disposition: inline; filename='.$fileName);
 		
 		echo $this->getCalendarText();
 		
 	}
+        
+        public function saveToFile($fileName) {
+            file_put_contents($fileName, $this->getCalendarText());
+        }
 	
 	public function getCalendarText() {
 		$Data = "BEGIN:VCALENDAR\n";
@@ -68,7 +72,10 @@ class ICalendar {
 		return $Data .= "END:VCALENDAR";
 	}
 	
-	public static function convertUTC($Timespan = null) {
+	/*
+         * @TODO: this is not a good way fix it
+         */
+        public static function convertUTC($Timespan = null) {
                 if (is_null($Timespan)) { $Timespan = time();}
 		return $Utc = strtotime((date("Z",$Timespan)*-1)." seconds",$Timespan);
 	}
