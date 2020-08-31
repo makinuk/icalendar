@@ -18,8 +18,8 @@
         "phpunit/phpunit": "7"
     },
     "autoload": {
-        "psr-0": {
-            "makinuk\\ICalendar\\": ""
+        "psr-4": {
+            "makinuk\\ICalendar\\": "src\\"
         }
     },
     "target-dir": "makinuk/ICalendar",
