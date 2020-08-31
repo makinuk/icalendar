@@ -3,3 +3,4 @@ composer.lock
 /Example/*.ics
 /Test/*.ics
 /Test/*.xml
+.idea/
