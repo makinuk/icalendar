@@ -3,7 +3,7 @@
     "type": "library",
     "description": "iCalendar is a computer file format which allows Internet users to send meeting requests and tasks to other Internet users",
     "keywords": ["ICalendar", "outlook", "google mail", "task", "meeting","alarm"],
-    "homepage": "http://makinuk.com",
+    "homepage": "https://github.com/makinuk/icalendar",
     "license": "MIT",
     "authors": [
         {
@@ -21,7 +21,5 @@
         "psr-4": {
             "makinuk\\ICalendar\\": "src\\"
         }
-    },
-    "target-dir": "makinuk/ICalendar",
-    "minimum-stability": "dev"
+    }
 }
