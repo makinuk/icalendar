@@ -1,5 +1,7 @@
 # icalendar
-iCalendar is a computer file format which allows Internet users to send meeting requests and tasks to other Internet users
+iCalendar is a computer file format that allows Internet users to send meeting requests and tasks to other Internet users
+
+This project follows [RFC 5545](http://tools.ietf.org/html/rfc5545)
 
 # Composer
 > composer require makinuk/icalendar>=1.0
