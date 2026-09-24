@@ -1,0 +1,38 @@
+name: Bug report
+description: The generated calendar is wrong or a calendar client does not accept it.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Library version
+      placeholder: "3.0.0"
+    validations:
+      required: true
+  - type: input
+    id: php
+    attributes:
+      label: PHP version
+      placeholder: "8.3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: Code
+      description: The smallest piece of code that reproduces the problem.
+      render: php
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Generated .ics output
+      render: text
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect and what happened?
+      description: Include the calendar client (Outlook, Google Calendar, Apple Calendar...) and its version if relevant.
+    validations:
+      required: true

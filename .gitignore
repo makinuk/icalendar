@@ -1,6 +1,8 @@
 /vendor/
 composer.lock
-/Example/*.ics
-/Test/*.ics
-/Test/*.xml
+/.phpunit.cache/
+/.php-cs-fixer.cache
+/examples/*.ics
 .idea/
+.vscode/
+.DS_Store

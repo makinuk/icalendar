@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest a property, component or improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you want to achieve?
+      description: Describe the use case, e.g. "Outlook should show the event as out of office".
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: How would you like to write it in PHP?
+      render: php
+  - type: input
+    id: rfc
+    attributes:
+      label: RFC reference
+      description: The RFC section of the property or component, if any.
+      placeholder: "RFC 5545 §3.8.1.4"
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to implement this myself.

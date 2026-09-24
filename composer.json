@@ -1,8 +1,8 @@
 {
     "name": "makinuk/icalendar",
     "type": "library",
-    "description": "iCalendar is a computer file format which allows Internet users to send meeting requests and tasks to other Internet users",
-    "keywords": ["ICalendar", "outlook", "google mail", "task", "meeting","alarm"],
+    "description": "Generate RFC 5545 iCalendar (.ics) files in PHP: events, to-dos, alarms, recurring events and meeting invitations.",
+    "keywords": ["icalendar", "ical", "ics", "rfc5545", "calendar", "vevent", "vtodo", "event", "meeting", "invitation", "alarm", "outlook", "google calendar"],
     "homepage": "https://github.com/makinuk/icalendar",
     "license": "MIT",
     "authors": [
@@ -11,15 +11,50 @@
             "email": "makinuk@gmail.com"
         }
     ],
+    "support": {
+        "issues": "https://github.com/makinuk/icalendar/issues",
+        "source": "https://github.com/makinuk/icalendar",
+        "docs": "https://github.com/makinuk/icalendar/tree/master/docs"
+    },
     "require": {
-        "php": ">=7.4"
+        "php": "^8.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "7"
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpunit/phpunit": "^11.4"
     },
     "autoload": {
         "psr-4": {
-            "makinuk\\ICalendar\\": "src\\"
+            "Makinuk\\ICalendar\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Makinuk\\ICalendar\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=512M",
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "check": ["@cs", "@analyse", "@test"]
+    },
+    "scripts-descriptions": {
+        "test": "Run the PHPUnit test suite",
+        "analyse": "Run PHPStan static analysis",
+        "cs": "Check the coding style",
+        "cs-fix": "Fix the coding style",
+        "check": "Run every check that CI runs"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.x-dev"
         }
     }
 }
