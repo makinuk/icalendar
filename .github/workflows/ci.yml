@@ -28,7 +28,7 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
         with:
           dependency-versions: ${{ matrix.dependencies }}
 
@@ -49,7 +49,7 @@ jobs:
           php-version: '8.4'
           coverage: none
 
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
 
       - name: Coding style
         run: composer cs
