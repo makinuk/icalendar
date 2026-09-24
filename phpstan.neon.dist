@@ -1,8 +1,15 @@
 includes:
-    - vendor/phpstan/phpstan-phpunit/extension.neon
+  - vendor/phpstan/phpstan-phpunit/extension.neon
 
 parameters:
-    level: max
-    paths:
-        - src
-        - tests
+  level: max
+  bootstrapFiles:
+    # Rector's own dependencies (php-parser, rule-doc-generator) are autoloaded from its bundled vendor.
+    - vendor/rector/rector/vendor/autoload.php
+  paths:
+    - src
+    - rector/src
+    - rector/config
+    - tests
+  excludePaths:
+    - tests/Rector/Fixture

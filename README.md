@@ -26,7 +26,7 @@ composer require makinuk/icalendar
 | 3.x     | ≥ 8.2  | Active development              |
 | 2.x     | ≥ 7.4  | No longer maintained            |
 
-Upgrading from 2.x? Read the [upgrade guide](UPGRADE-3.0.md).
+Upgrading from 2.x? Read the [upgrade guide](UPGRADE-3.0.md): a bundled [Rector](https://getrector.com) set migrates most of your code automatically.
 
 ## Quick start
 

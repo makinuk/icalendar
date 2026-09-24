@@ -2,7 +2,21 @@
     "name": "makinuk/icalendar",
     "type": "library",
     "description": "Generate RFC 5545 iCalendar (.ics) files in PHP: events, to-dos, alarms, recurring events and meeting invitations.",
-    "keywords": ["icalendar", "ical", "ics", "rfc5545", "calendar", "vevent", "vtodo", "event", "meeting", "invitation", "alarm", "outlook", "google calendar"],
+    "keywords": [
+        "icalendar",
+        "ical",
+        "ics",
+        "rfc5545",
+        "calendar",
+        "vevent",
+        "vtodo",
+        "event",
+        "meeting",
+        "invitation",
+        "alarm",
+        "outlook",
+        "google calendar"
+    ],
     "homepage": "https://github.com/makinuk/icalendar",
     "license": "MIT",
     "authors": [
@@ -14,7 +28,7 @@
     "support": {
         "issues": "https://github.com/makinuk/icalendar/issues",
         "source": "https://github.com/makinuk/icalendar",
-        "docs": "https://github.com/makinuk/icalendar/tree/master/docs"
+        "docs": "https://github.com/makinuk/icalendar/tree/main/docs"
     },
     "require": {
         "php": "^8.2"
@@ -23,10 +37,15 @@
         "friendsofphp/php-cs-fixer": "^3.64",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^11.4"
+        "phpunit/phpunit": "^11.4",
+        "rector/rector": "^2.6"
+    },
+    "suggest": {
+        "rector/rector": "Run the bundled Rector set to upgrade code from 2.x to 3.0 automatically"
     },
     "autoload": {
         "psr-4": {
+            "Makinuk\\ICalendar\\Rector\\": "rector/src/",
             "Makinuk\\ICalendar\\": "src/"
         }
     },
@@ -40,7 +59,11 @@
         "analyse": "phpstan analyse --memory-limit=512M",
         "cs": "php-cs-fixer fix --dry-run --diff",
         "cs-fix": "php-cs-fixer fix",
-        "check": ["@cs", "@analyse", "@test"]
+        "check": [
+            "@cs",
+            "@analyse",
+            "@test"
+        ]
     },
     "scripts-descriptions": {
         "test": "Run the PHPUnit test suite",
@@ -54,7 +77,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.x-dev"
+            "dev-main": "3.x-dev"
         }
     }
 }

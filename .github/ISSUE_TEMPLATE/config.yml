@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Documentation
-    url: https://github.com/makinuk/icalendar/tree/master/docs
+    url: https://github.com/makinuk/icalendar/tree/main/docs
     about: Guides for events, to-dos, alarms, recurrence, invitations and integrations.
   - name: Security vulnerability
     url: https://github.com/makinuk/icalendar/security/advisories/new

@@ -1,8 +1,80 @@
 # Upgrading from 2.x to 3.0
 
 3.0 is a rewrite that makes the output RFC 5545 compliant and modernises the API. Most projects
-need to change only a few lines. The 2.x line stays available (`"makinuk/icalendar": "^2.1"`) but
+need to change only a few lines, and most of them can be changed automatically with
+[Rector](#automated-upgrade-with-rector). The 2.x line stays available (`"makinuk/icalendar": "^2.1"`) but
 is no longer maintained.
+
+## Automated upgrade with Rector
+
+The package ships a [Rector](https://getrector.com) set that rewrites 2.x code to the 3.0 API:
+class names, imports, method names, constructors, alarms, attendees and method strings.
+
+1. Upgrade the package and install Rector:
+
+   ```bash
+   composer require makinuk/icalendar:^3.1
+   composer require --dev rector/rector
+   ```
+
+2. Create `rector.php` in your project root (or add the set to your existing configuration):
+
+   ```php
+   <?php
+
+   use Makinuk\ICalendar\Rector\Set\ICalendarSetList;
+   use Rector\Config\RectorConfig;
+
+   return RectorConfig::configure()
+       ->withPaths([__DIR__ . '/src'])
+       ->withSets([ICalendarSetList::UPGRADE_30])
+       ->withImportNames(removeUnusedImports: true);
+   ```
+
+3. Preview the changes, then apply them:
+
+   ```bash
+   vendor/bin/rector process --dry-run
+   vendor/bin/rector process
+   ```
+
+4. Run your coding style fixer and your tests, and review the [output changes](#output-changes).
+
+For example, the 2.x README example becomes:
+
+```diff
+-$ical = new makinuk\ICalendar\ICalendar();
+-$event = new makinuk\ICalendar\ICalEvent();
+-$event->setUId("11223344")
+-        ->setStartDate(strtotime("+24 hours"))
+-        ->setOrganizer(new makinuk\ICalendar\ICalPerson("Mustafa AKIN", "user@domain.com"))
+-        ->setAlarm(new makinuk\ICalendar\ICalAlarm(0, 1, 10, 0));
+-$ical->addEvent($event);
+-$ical->saveToFile("simpleEventAdd.ics");
++$ical = new Calendar();
++$event = new Event();
++$event->setUid("11223344")
++        ->setStart(strtotime("+24 hours"))
++        ->setOrganizer(new Organizer("user@domain.com", "Mustafa AKIN"))
++        ->addAlarm(Alarm::display('Reminder')->before(hours: 1, minutes: 10));
++$ical->add($event);
++$ical->save("simpleEventAdd.ics");
+```
+
+Rector only changes calls whose type it can prove, so your own classes with methods such as `show()`
+or `addEvent()` are left alone. Review these cases by hand:
+
+| Case | What to do |
+|---|---|
+| Variables Rector cannot type, e.g. an untyped function return value | add a type declaration and run Rector again, or migrate by hand |
+| `new ICalPerson()` with fewer than two arguments, `setName()` / `setEmail()` | pass the e-mail and name to the `Organizer` / `Attendee` constructor |
+| Writes to `$person->Name`, `$person->Email`, reads of `$attendee->Person`, `$attendee->RSVP`, `$calendar->Method` | use the constructors and getters of 3.0 |
+| `getPersonText()`, `getAttendeeText()` | use `toProperty()->toString()` |
+| `new ICalendar()` without a method | 2.x always wrote `METHOD:PUBLISH`, 3.0 writes no method; add `->setMethod(Method::Publish)` if you rely on it |
+| `new ICalAlarm()` with only zeros | 2.x wrote no alarm at all, the migrated `->before()` fires at the start; remove the alarm if that was the intent |
+| Method strings that are not iTIP methods | `Method::from('X-CUSTOM')` throws a `ValueError`; choose a `Method` case |
+
+The set requires Rector 2.
 
 ## Requirements
 

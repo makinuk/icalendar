@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-09-24
+
+### Added
+
+- Rector set `ICalendarSetList::UPGRADE_30` that migrates 2.x code to the 3.0 API automatically
+
 ## [3.0.0] - 2026-09-24
 
 A rewrite with RFC 5545 compliant output and a typed API. See [UPGRADE-3.0.md](UPGRADE-3.0.md).
@@ -59,7 +65,8 @@ A rewrite with RFC 5545 compliant output and a typed API. See [UPGRADE-3.0.md](U
 
 - First release
 
-[Unreleased]: https://github.com/makinuk/icalendar/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/makinuk/icalendar/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/makinuk/icalendar/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/makinuk/icalendar/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/makinuk/icalendar/compare/v1.0.1...v2.1.0
 [1.0.1]: https://github.com/makinuk/icalendar/compare/v1.0...v1.0.1

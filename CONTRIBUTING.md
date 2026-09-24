@@ -50,12 +50,15 @@ real client or with `vendor/bin/vobject validate` from [sabre/vobject](https://g
 **Document it.** Update the relevant page in `docs/`, the support matrix in
 `docs/rfc-compliance.md` and the `Unreleased` section of `CHANGELOG.md`.
 
+**Rector rules** for upgrades live in `rector/`, with fixtures in `tests/Rector/Fixture`: each
+`.php.inc` file holds the code before and after `-----`.
+
 **Mind backwards compatibility.** Public classes and methods follow semantic versioning. Classes in
 `Support\` are internal. Breaking changes are only possible in a major version.
 
 ## Pull requests
 
-1. Fork the repository and create a branch from `master`.
+1. Fork the repository and create a branch from `main`.
 2. Make your change with tests and documentation.
 3. Run `composer check`.
 4. Open a pull request and fill in the template.
